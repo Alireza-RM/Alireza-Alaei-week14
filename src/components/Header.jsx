@@ -5,30 +5,48 @@ import { FaPlus } from "react-icons/fa6";
 
 import styles from "./Header.module.css"
 
-function Header() {
+function Header({ search, setSearch, contacts, setIsAddContact, isDeleteGroup, setIsDeleteGroup, deleteContactHandler, setDeletesId }) {
+
+
+
     return (
         <div className={styles.container}>
             <div className={styles.search}>
                 <label htmlFor="search">جستجو در مخاطبین :</label>
-                <input type="text" id="search" />
+                <input type="text" id="search" value={search} onChange={(e) => setSearch(e.target.value)} />
             </div>
             <div className={styles.icons}>
-                <div>
-                    <div className={styles.icon}>
+                {!isDeleteGroup ?
+
+                    <div className={styles.icon} style={{ display: `${!contacts.length ? "none" : ""}`}} onClick={() => setIsDeleteGroup(prev => !prev)}>
                         <IoCheckmarkDoneSharp />
                     </div>
-                    {/* <span className={styles.icon}>
-                        <IoPersonRemove />
-                    </span>
-                    <span className={styles.icon}>
-                        <PiArrowBendUpLeftBold />
-                    </span> */}
-                </div>
-                <div className={styles.icon}>
+                    :
+                    <>
+                        <span className={styles.icon}
+                            onClick={() => {
+                                deleteContactHandler()
+                                setIsDeleteGroup(prev => !prev)
+                            }
+                            }>
+                            <IoPersonRemove />
+                        </span>
+                        <span className={styles.icon}
+                            onClick={() => setIsDeleteGroup(prev => {
+                                !prev
+                                setDeletesId([])
+                            })}>
+                            <PiArrowBendUpLeftBold />
+                        </span>
+                    </>
+                }
+
+
+                <div className={styles.icon} onClick={() => setIsAddContact(prev => !prev)} >
                     <FaPlus />
-                </div> 
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -2,43 +2,47 @@
   /* background-color: rgb(67, 66, 66); */
   /* opacity: 0.7; */
   /* filter: blur(64px); */
-  /* width: 100%; */
+  /* width: 100vh; */
   /* height: 100vh; */
   /* position: fixed; */
   /* z-index: 20; */
-  top: 0;
-  left: 0;
+  /* top: 0; */
+  /* left: 0; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 .modalBackground {
   background-color: rgb(67, 66, 66);
+  position: fixed;
   width: 100%;
   height: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   opacity: 0.7;
-
 }
 .modalCenter {
   background-color: #d3d3d3;
-  position: absolute;
-  bottom: 40%;
-  left: 10%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 80%;
+  max-width: 1000px;
+  min-height: 300px;
   padding: 40px;
-  /* height: 20%; */
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 40px;
   z-index: 30;
-  /* margin: auto; */
 }
 
 .buttons {
   display: flex;
+  justify-content: center;
   gap: 85px;
 }
 
@@ -52,4 +56,8 @@
 }
 .cancel {
   background-color: gray;
+}
+
+.aa {
+  text-align: center;
 }
